@@ -55,12 +55,6 @@
             z-index: 1000; display: flex; flex-direction: column; justify-content: center; align-items: center;
             transition: opacity 1.2s ease-in-out, visibility 1.2s;
         }
-        
-        /* Overlay sutil para oscurecer/aclarar el fondo si es necesario */
-        .envelope-overlay {
-            position: absolute; top: 0; left: 0; width: 100%; height: 100%;
-            background-color: rgba(247, 241, 234, 0.6); z-index: 1;
-        }
 
         #envelope-screen.fade-out { opacity: 0; visibility: hidden; pointer-events: none; }
 
@@ -72,12 +66,13 @@
         .env-tag {
             font-family: 'Cinzel', serif; font-size: 14px; letter-spacing: 8px;
             text-transform: uppercase; color: var(--black-premium); font-weight: 600;
+            background: rgba(247, 241, 234, 0.8); padding: 5px 15px; border-radius: 2px;
         }
 
         .env-title {
             font-family: 'Pinyon Script', cursive; font-size: 85px;
-            color: var(--hero-red); line-height: 1.2; margin-top: 5px;
-            text-shadow: 2px 2px 4px rgba(0,0,0,0.1);
+            color: var(--black-premium); line-height: 1.2; margin-top: 5px;
+            text-shadow: 2px 2px 10px rgba(255,255,255,0.8);
         }
 
         .envelope-wrapper {
@@ -116,9 +111,11 @@
 
         .seal-img {
             position: absolute; top: 85px; left: 50%; transform: translateX(-50%);
-            width: 65px; height: auto; z-index: 5;
+            width: 75px; height: auto; z-index: 5;
             transition: opacity 0.5s ease 0.1s, transform 0.5s ease;
             pointer-events: none;
+            /* Se removió cualquier fondo o sombra del sello */
+            background: transparent; border: none; box-shadow: none;
         }
         
         .envelope-wrapper.open .seal-img { opacity: 0; transform: translateX(-50%) scale(0.5); }
@@ -127,6 +124,7 @@
             text-align: center; font-size: 11px; font-weight: 500; text-transform: uppercase; 
             letter-spacing: 4px; color: var(--black-premium); margin-top: 40px; 
             animation: pulse 2.5s infinite; position: relative; z-index: 10;
+            background: rgba(247, 241, 234, 0.8); padding: 5px 15px; border-radius: 2px;
         }
 
         @keyframes pulse { 0% { opacity: 0.4; } 50% { opacity: 1; } 100% { opacity: 0.4; } }
@@ -147,223 +145,228 @@
         .anim-fade-up.in-view { opacity: 1; transform: translateY(0); }
         .anim-zoom { transform: scale(0.92); }
         .anim-zoom.in-view { opacity: 1; transform: scale(1); }
-
         .delay-1 { transition-delay: 0.1s; }
         .delay-2 { transition-delay: 0.25s; }
         .delay-3 { transition-delay: 0.4s; }
         .delay-4 { transition-delay: 0.55s; }
 
-        /* Bloques de Sección */
+        /* Estructura Editorial Coreana */
         .section-block {
-            width: 100%; padding: 110px 20px; display: flex; flex-direction: column; align-items: center; text-align: center;
-            position: relative; overflow: hidden;
+            width: 100%; padding: 70px 20px; display: flex; flex-direction: column; align-items: center; text-align: center;
+            position: relative; overflow: hidden; background-color: var(--bg-base);
         }
-
-        .bg-base { background-color: var(--bg-base); }
-        .bg-hero { background-color: var(--hero-red); color: #ffffff; }
+        
         .bg-black { background-color: var(--black-premium); color: #ffffff; }
 
-        /* Cerezos Flotantes */
+        /* Contenedor con borde fino característico de las revistas asiáticas */
+        .editorial-frame {
+            width: 100%; max-width: 600px; margin: 0 auto; padding: 40px 20px;
+            border: 1px solid rgba(196, 154, 90, 0.4); position: relative; z-index: 2;
+        }
+
+        /* Texto Vertical K-Editorial */
+        .vertical-accent {
+            position: absolute; writing-mode: vertical-rl; text-orientation: mixed;
+            font-family: 'Cinzel', serif; color: rgba(196, 154, 90, 0.3); font-size: 14px;
+            letter-spacing: 6px; top: 40px; right: 10px; z-index: 1; pointer-events: none;
+        }
+        .vertical-accent.left { right: auto; left: 10px; }
+
+        /* Cerezos Flotantes (Con mix-blend-mode para eliminar fondo blanco) */
         .floral-img {
-            position: absolute; pointer-events: none; z-index: 0; opacity: 0.85; max-width: 200px;
-            filter: drop-shadow(0 10px 20px rgba(0,0,0,0.1)); 
-            animation: floatSakura 6s ease-in-out infinite;
+            position: absolute; pointer-events: none; z-index: 0; opacity: 0.4; max-width: 250px;
+            mix-blend-mode: multiply; /* Elimina fondos blancos automáticamente */
+            animation: floatSakura 8s ease-in-out infinite;
         }
 
         /* Tipografía Editorial */
         .tag-line {
-            font-family: 'Cinzel', serif; font-size: 14px; letter-spacing: 5px;
-            text-transform: uppercase; color: var(--gold-premium); margin-bottom: 25px; font-weight: 500;
+            font-family: 'Cinzel', serif; font-size: 13px; letter-spacing: 5px;
+            text-transform: uppercase; color: var(--gold-premium); margin-bottom: 20px; font-weight: 500;
         }
 
         .title-script {
-            font-family: 'Pinyon Script', cursive; font-size: 90px;
-            color: var(--text-dark); margin-bottom: 20px; line-height: 1.1; font-weight: 400;
+            font-family: 'Pinyon Script', cursive; font-size: 100px;
+            color: var(--text-dark); margin-bottom: 10px; line-height: 1.1; font-weight: 400;
         }
 
         .body-serif {
             font-family: 'Cormorant Garamond', serif; font-size: 24px;
             line-height: 1.6; color: var(--text-muted); font-style: italic;
-            max-width: 650px; padding: 0 15px; font-weight: 400;
+            max-width: 550px; padding: 0 15px; font-weight: 400; margin: 0 auto;
         }
 
-        /* Adaptaciones para fondos oscuros o el hero */
-        .bg-hero .title-script { color: #ffffff; }
-        .bg-hero .body-serif { color: #ffe8e8; }
-        .bg-hero .tag-line { color: var(--gold-premium); }
-        
+        /* Hero Text Rojo */
+        .hero-text { color: var(--hero-red) !important; }
+
         .bg-black .title-script { color: var(--gold-premium); }
         .bg-black .body-serif { color: #cccccc; }
+        .bg-black .floral-img { mix-blend-mode: screen; opacity: 0.15; filter: grayscale(100%); }
 
-        .line-divider { width: 1px; height: 60px; background-color: var(--gold-premium); margin: 35px auto; }
-        .line-horizontal { width: 60px; height: 1px; background-color: var(--gold-premium); margin: 40px auto; }
+        .line-divider { width: 1px; height: 50px; background-color: var(--gold-premium); margin: 30px auto; }
+        .line-horizontal { width: 50px; height: 1px; background-color: var(--gold-premium); margin: 30px auto; }
 
-        /* Imágenes sin bordes toscos */
+        /* Imágenes Editorial */
         .photo-frame {
-            width: 100%; max-width: 420px; margin: 40px auto;
-            box-shadow: 0 20px 50px rgba(0,0,0,0.1); border-radius: 4px;
-            overflow: hidden; border: 5px solid #FFFFFF; position: relative; z-index: 2;
+            width: 100%; max-width: 420px; margin: 30px auto 10px auto;
+            box-shadow: 0 15px 40px rgba(0,0,0,0.08);
+            position: relative; z-index: 2; padding: 8px; background: #fff;
+            border: 1px solid rgba(196, 154, 90, 0.2);
         }
-        .bg-black .photo-frame { border-color: var(--gold-premium); box-shadow: 0 20px 50px rgba(0,0,0,0.5); }
-        .bg-hero .photo-frame { border-color: var(--gold-premium); }
-        .photo-frame img { width: 100%; display: block; filter: contrast(1.05) saturate(1.05); transition: transform 0.8s ease; }
-        .photo-frame:hover img { transform: scale(1.03); }
+        .bg-black .photo-frame { background: #222; border-color: var(--gold-premium); box-shadow: 0 20px 50px rgba(0,0,0,0.5); }
+        .photo-frame img { width: 100%; display: block; filter: contrast(1.05) saturate(1.02); transition: transform 0.8s ease; }
+        .photo-frame:hover img { transform: scale(1.02); }
 
         /* Información Textual */
         .info-title {
-            font-family: 'Cinzel', serif; font-size: 15px; letter-spacing: 3px; line-height: 1.4;
-            text-transform: uppercase; color: var(--gold-premium); margin-bottom: 12px; font-weight: 600;
+            font-family: 'Cinzel', serif; font-size: 14px; letter-spacing: 4px; line-height: 1.4;
+            text-transform: uppercase; color: var(--gold-premium); margin-bottom: 10px; font-weight: 600;
         }
 
         .info-data {
-            font-family: 'Cormorant Garamond', serif; font-size: 34px;
+            font-family: 'Cormorant Garamond', serif; font-size: 32px;
             color: var(--text-dark); margin-bottom: 5px; font-weight: 500; line-height: 1.3;
         }
 
-        .bg-black .info-data, .bg-hero .info-data { color: #ffffff; }
+        .bg-black .info-data { color: #ffffff; }
 
         /* Botones Premium */
         .btn-solid {
-            display: inline-block; background-color: var(--gold-premium); color: #fff;
-            padding: 17px 35px; font-family: 'Montserrat', sans-serif; font-size: 12px;
+            display: inline-block; background-color: var(--black-premium); color: var(--gold-premium);
+            padding: 16px 30px; font-family: 'Montserrat', sans-serif; font-size: 12px;
             font-weight: 500; letter-spacing: 3px; text-transform: uppercase;
-            text-decoration: none; border: none; cursor: pointer; border-radius: 2px;
-            transition: all 0.4s ease; margin-top: 30px; position: relative; z-index: 5;
+            text-decoration: none; border: 1px solid var(--gold-premium); cursor: pointer;
+            transition: all 0.4s ease; margin-top: 25px; position: relative; z-index: 5;
         }
-        .btn-solid:hover { background-color: #111111; color: var(--gold-premium); transform: translateY(-3px); box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2); }
+        .btn-solid:hover { background-color: var(--gold-premium); color: #fff; transform: translateY(-3px); box-shadow: 0 10px 20px rgba(196, 154, 90, 0.3); }
         
-        .bg-black .btn-solid { background-color: var(--gold-premium); color: #111; }
+        .bg-black .btn-solid { background-color: var(--gold-premium); color: #111; border: none; }
         .bg-black .btn-solid:hover { background-color: #fff; }
 
         /* Widget de Calendario Editorial */
         .calendar-wrapper {
-            width: 100%; max-width: 340px; margin: 40px auto; padding: 35px 25px;
-            background: #fff; border-radius: 4px; box-shadow: 0 15px 45px rgba(0,0,0,0.06);
-            box-sizing: border-box; border: 1px solid rgba(196, 154, 90, 0.2); position: relative; z-index: 2;
+            width: 100%; max-width: 320px; margin: 30px auto; padding: 25px;
+            background: transparent; border-top: 1px solid var(--gold-premium); border-bottom: 1px solid var(--gold-premium);
+            box-sizing: border-box; position: relative; z-index: 2;
         }
-
         .calendar-month {
-            font-family: 'Cinzel', serif; font-size: 22px; color: var(--text-dark);
-            text-transform: uppercase; letter-spacing: 4px; margin-bottom: 30px; font-weight: 600;
+            font-family: 'Cinzel', serif; font-size: 20px; color: var(--text-dark);
+            text-transform: uppercase; letter-spacing: 4px; margin-bottom: 25px; font-weight: 600;
         }
-
         .calendar-grid {
-            display: grid; grid-template-columns: repeat(7, 1fr); gap: 8px;
-            width: 100%; box-sizing: border-box;
+            display: grid; grid-template-columns: repeat(7, 1fr); gap: 6px; width: 100%;
         }
-
         .cal-header {
-            font-family: 'Montserrat', sans-serif; font-size: clamp(10px, 3vw, 12px);
-            font-weight: 600; color: var(--gold-premium); padding-bottom: 12px;
+            font-family: 'Montserrat', sans-serif; font-size: 11px;
+            font-weight: 600; color: var(--gold-premium); padding-bottom: 10px;
         }
-
         .cal-day {
-            font-family: 'Cormorant Garamond', serif; font-size: clamp(16px, 4.5vw, 20px);
+            font-family: 'Cormorant Garamond', serif; font-size: 18px;
             font-weight: 500; color: var(--text-muted); display: flex; justify-content: center; align-items: center;
             aspect-ratio: 1;
         }
-
         .cal-day.active {
-            background-color: var(--gold-premium); color: #fff; border-radius: 50%; 
-            font-weight: 600; box-shadow: 0 4px 12px rgba(196, 154, 90, 0.4);
+            background-color: var(--hero-red); color: #fff; border-radius: 50%; 
+            font-weight: 600; box-shadow: 0 4px 10px rgba(181, 18, 23, 0.3);
         }
 
         /* Mapas */
         .map-box {
-            width: 100%; max-width: 550px; height: 320px; margin: 30px auto;
-            overflow: hidden; border-radius: 4px; box-shadow: 0 15px 40px rgba(0,0,0,0.08); position: relative; z-index: 2;
-            border: 2px solid var(--gold-premium);
+            width: 100%; max-width: 500px; height: 280px; margin: 25px auto;
+            overflow: hidden; position: relative; z-index: 2;
+            border: 1px solid var(--gold-premium); padding: 5px; background: #fff;
         }
         .map-box iframe { width: 100%; height: 100%; border: none; filter: contrast(1.05); }
 
-        /* Itinerario Vertical */
-        .timeline {
-            max-width: 500px; margin: 40px auto; padding: 0 20px; position: relative; text-align: left;
+        /* --- ITINERARIO NUEVO: DISEÑO EDITORIAL --- */
+        .itinerary-grid {
+            display: flex; flex-direction: column; gap: 15px; width: 100%; max-width: 480px; margin: 30px auto;
         }
-        .timeline::before {
-            content: ''; position: absolute; left: 50px; top: 0; bottom: 0; width: 1px; background-color: var(--gold-premium);
+        .itinerary-item {
+            display: flex; align-items: center; padding: 18px 20px;
+            background: #fff; border: 1px solid rgba(196, 154, 90, 0.3);
+            transition: all 0.3s ease; position: relative; overflow: hidden;
         }
-        .timeline-item {
-            position: relative; margin-bottom: 35px; padding-left: 100px;
+        .itinerary-item::before {
+            content: ''; position: absolute; left: 0; top: 0; height: 100%; width: 4px;
+            background-color: var(--gold-premium); transition: width 0.3s ease;
         }
-        .timeline-time {
-            position: absolute; left: 0; top: 2px; font-family: 'Cinzel', serif; font-size: 14px; 
-            font-weight: 600; color: var(--gold-premium);
+        .itinerary-item:hover { transform: translateY(-2px); box-shadow: 0 8px 20px rgba(0,0,0,0.05); border-color: var(--gold-premium); }
+        .itinerary-item:hover::before { width: 8px; }
+        
+        .itinerary-time {
+            font-family: 'Cinzel', serif; font-weight: 600; color: var(--hero-red);
+            font-size: 17px; min-width: 85px; border-right: 1px solid rgba(0,0,0,0.1);
+            margin-right: 20px; padding-right: 15px; text-align: right;
         }
-        .timeline-dot {
-            position: absolute; left: 45px; top: 6px; width: 11px; height: 11px;
-            background-color: var(--bg-base); border: 2px solid var(--gold-premium); border-radius: 50%; z-index: 2;
-        }
-        .timeline-content {
-            font-family: 'Cormorant Garamond', serif; font-size: 24px; color: var(--text-dark); font-weight: 500; line-height: 1.2;
+        .itinerary-desc {
+            font-family: 'Cormorant Garamond', serif; font-size: 23px; color: var(--text-dark);
+            text-align: left; font-weight: 500;
         }
 
         /* Paleta de Colores Dress Code */
         .color-palette {
-            display: flex; flex-wrap: wrap; justify-content: center; gap: 20px; margin-top: 30px;
+            display: flex; flex-wrap: wrap; justify-content: center; gap: 20px; margin-top: 30px; max-width: 450px; margin-left: auto; margin-right: auto;
         }
         .color-item {
-            display: flex; flex-direction: column; align-items: center; width: 80px;
+            display: flex; flex-direction: column; align-items: center; width: 85px; margin-bottom: 10px;
         }
         .color-circle {
-            width: 45px; height: 45px; border-radius: 50%; margin-bottom: 10px;
-            box-shadow: 0 4px 10px rgba(0,0,0,0.3); border: 1px solid rgba(255,255,255,0.2);
+            width: 50px; height: 50px; border-radius: 50%; margin-bottom: 12px;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.5); border: 2px solid #333;
         }
         .color-name {
-            font-family: 'Montserrat', sans-serif; font-size: 10px; color: #ccc; text-transform: uppercase; letter-spacing: 1px; text-align: center;
+            font-family: 'Montserrat', sans-serif; font-size: 10px; color: #ccc; text-transform: uppercase; letter-spacing: 1px; text-align: center; line-height: 1.3;
         }
 
-        /* Formularios RSVP Finos */
+        /* Formularios RSVP */
         .form-group { width: 100%; max-width: 400px; margin: 0 auto 20px auto; position: relative; z-index: 2; }
         
         .input-line {
-            width: 100%; padding: 18px 0; background: transparent; border: none;
+            width: 100%; padding: 15px 0; background: transparent; border: none;
             border-bottom: 1px solid rgba(196, 154, 90, 0.4); color: var(--text-dark);
-            font-family: 'Montserrat', sans-serif; font-size: 15px; font-weight: 400; outline: none;
+            font-family: 'Montserrat', sans-serif; font-size: 14px; font-weight: 400; outline: none;
             text-align: center; transition: border-color 0.4s;
         }
         .input-line:focus { border-bottom-color: var(--hero-red); }
-        .input-line::placeholder { color: #999; font-style: normal; }
+        .input-line::placeholder { color: #888; font-style: normal; }
         .input-line:disabled { color: var(--hero-red); background-color: rgba(255,255,255,0.4); cursor: not-allowed; font-weight: 500; }
         
-        textarea.input-line { resize: vertical; min-height: 90px; }
+        textarea.input-line { resize: vertical; min-height: 80px; }
         select.input-line { appearance: none; text-align-last: center; cursor: pointer; }
 
         /* Boleto Pase VIP Editorial Premium */
         .ticket-card {
-            width: 100%; max-width: 400px; margin: 30px auto; background-color: var(--black-premium);
+            width: 100%; max-width: 400px; margin: 20px auto; background-color: var(--black-premium);
             padding: 50px 25px; position: relative; text-align: center;
-            border-radius: 8px; box-shadow: 0 20px 50px rgba(0,0,0,0.2);
-            border: 2px solid var(--gold-premium); z-index: 2; overflow: hidden;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.15); border: 1px solid var(--gold-premium); z-index: 2; overflow: hidden;
         }
         .ticket-card::before, .ticket-card::after {
             content: ''; position: absolute; top: 55%; transform: translateY(-50%);
             width: 30px; height: 30px; background-color: var(--bg-base); border-radius: 50%;
-            border: 2px solid var(--gold-premium);
+            border: 1px solid var(--gold-premium);
         }
-        .ticket-card::before { left: -17px; border-right-color: transparent; border-top-color: transparent; transform: translateY(-50%) rotate(45deg); }
-        .ticket-card::after { right: -17px; border-left-color: transparent; border-bottom-color: transparent; transform: translateY(-50%) rotate(45deg); }
+        .ticket-card::before { left: -16px; border-right-color: transparent; border-top-color: transparent; transform: translateY(-50%) rotate(45deg); }
+        .ticket-card::after { right: -16px; border-left-color: transparent; border-bottom-color: transparent; transform: translateY(-50%) rotate(45deg); }
         
         .ticket-border-inner {
-            position: absolute; top: 10px; left: 10px; right: 10px; bottom: 10px;
-            border: 1px dashed rgba(196, 154, 90, 0.4); border-radius: 4px; pointer-events: none;
+            position: absolute; top: 12px; left: 12px; right: 12px; bottom: 12px;
+            border: 1px solid rgba(196, 154, 90, 0.3); pointer-events: none;
         }
 
         /* Responsive Móvil */
         @media (max-width: 400px) {
             .env-title { font-size: 70px; }
-            .title-script { font-size: 75px; }
-            .section-block { padding: 80px 15px; }
-            .info-data { font-size: 28px; }
-            .map-box { height: 260px; }
+            .title-script { font-size: 80px; }
+            .section-block { padding: 60px 15px; }
+            .editorial-frame { padding: 30px 15px; }
+            .info-data { font-size: 26px; }
+            .map-box { height: 240px; }
             .envelope { width: 300px; height: 195px; }
             .envelope::before, .envelope::after { border-left-width: 150px; border-right-width: 150px; border-top-width: 97px; border-bottom-width: 97px; }
             .front-flap { border-left-width: 150px; border-right-width: 150px; border-top-width: 105px; }
-            .floral-img { max-width: 140px; }
-            .timeline-item { padding-left: 80px; }
-            .timeline-time { font-size: 12px; }
-            .timeline-dot { left: 46px; }
-            .timeline::before { left: 51px; }
+            .itinerary-time { min-width: 70px; font-size: 15px; margin-right: 15px; padding-right: 10px; }
+            .itinerary-desc { font-size: 20px; }
         }
     </style>
 </head>
@@ -380,10 +383,6 @@
 
     <!-- PANTALLA INICIAL DEL SOBRE -->
     <div id="envelope-screen">
-        <div class="envelope-overlay"></div>
-        <img src="assets/cerezo.png" style="position: absolute; top: -20px; right: -20px; width: 220px; opacity: 0.9; transform: rotate(-15deg); pointer-events: none; z-index: 2;" alt="">
-        <img src="assets/cerezo2.png" style="position: absolute; bottom: -20px; left: -20px; width: 220px; opacity: 0.9; transform: rotate(15deg); pointer-events: none; z-index: 2;" alt="">
-
         <div class="envelope-text-container">
             <div class="env-tag">Mis XV Años</div>
             <h1 class="env-title">Xime</h1>
@@ -401,29 +400,39 @@
     <!-- CONTENIDO PRINCIPAL -->
     <main id="main-invitation">
         
-        <!-- Portada (Hero en Rojo) -->
-        <section class="section-block bg-hero">
-            <img src="assets/cerezo.png" class="floral-img anim-element anim-zoom delay-1" style="top: -20px; left: -30px; transform: rotate(15deg); filter: drop-shadow(0 0 10px rgba(0,0,0,0.5));" alt="">
-            <img src="assets/cerezo2.png" class="floral-img anim-element anim-zoom delay-2" style="bottom: 50px; right: -30px; transform: rotate(-20deg); filter: drop-shadow(0 0 10px rgba(0,0,0,0.5));" alt="">
+        <!-- Portada (Base clara, texto destacado en rojo) -->
+        <section class="section-block">
+            <div class="vertical-accent">제 15 회 생일</div>
+            
+            <!-- Cerezos esquineros sutiles, sin tapar, mix-blend-mode activado -->
+            <img src="assets/cerezo.png" class="floral-img anim-element anim-zoom delay-1" style="top: -20px; left: -50px; transform: rotate(15deg);" alt="">
+            <img src="assets/cerezo2.png" class="floral-img anim-element anim-zoom delay-2" style="bottom: 0px; right: -50px; transform: rotate(-20deg);" alt="">
 
-            <div class="anim-element anim-fade-up delay-1 tag-line" style="color: var(--gold-premium);">Mis XV Años</div>
-            <h1 class="anim-element anim-zoom delay-2 title-script">Xime</h1>
-            <div class="anim-element anim-fade-up delay-3 line-divider" style="background-color: var(--gold-premium);"></div>
-            <p class="anim-element anim-fade-up delay-4 body-serif">
-                "La vida es un escenario y este día brillaré con la fuerza de mi esencia, el ritmo su corazón y la magia de un sueño hecho realidad "
-            </p>
-            <div class="anim-element anim-fade-up delay-4 photo-frame">
+            <div class="editorial-frame anim-element anim-fade-up delay-1">
+                <div class="tag-line">Mis XV Años</div>
+                <!-- El rojo se aplica exclusivamente al título -->
+                <h1 class="title-script hero-text">Xime</h1>
+                
+                <div class="line-divider"></div>
+                
+                <p class="body-serif">
+                    "La vida es un escenario y este día brillaré con la fuerza de mi esencia, el ritmo su corazón y la magia de un sueño hecho realidad "
+                </p>
+            </div>
+
+            <div class="anim-element anim-fade-up delay-4 photo-frame" style="margin-top: 40px;">
                 <img src="assets/foto1.jpg" alt="Xime" onerror="this.style.display='none'">
             </div>
         </section>
 
         <!-- Fecha y Calendario -->
-        <section class="section-block bg-base">
-            <img src="assets/cerezo2.png" class="floral-img anim-element anim-zoom delay-2" style="top: 20%; right: -20px; transform: rotate(-35deg);" alt="">
+        <section class="section-block">
+            <div class="vertical-accent left">축하합니다</div>
+            <img src="assets/cerezo2.png" class="floral-img anim-element anim-zoom delay-2" style="top: 20%; right: -60px; transform: rotate(-35deg);" alt="">
 
             <div class="anim-element anim-fade-up delay-1 info-title">Será un honor contar con tu presencia el</div>
-            <div class="anim-element anim-fade-up delay-2 info-data" style="font-size: 45px; font-weight: 600;">15 de Noviembre</div>
-            <div class="anim-element anim-fade-up delay-3 info-data" style="font-size: 28px; color: var(--hero-red); letter-spacing: 3px;">2026</div>
+            <div class="anim-element anim-fade-up delay-2 info-data" style="font-size: 42px; font-weight: 600;">15 de Noviembre</div>
+            <div class="anim-element anim-fade-up delay-3 info-data" style="font-size: 26px; color: var(--gold-premium); letter-spacing: 3px;">2026</div>
 
             <div class="anim-element anim-zoom delay-4 calendar-wrapper">
                 <div class="calendar-month">Noviembre</div>
@@ -439,143 +448,136 @@
 
             <a href="https://calendar.google.com/calendar/render?action=TEMPLATE&text=XV+A%C3%B1os+de+Xime&dates=20261115T182000Z/20261116T020000Z&details=Celebremos+juntos+este+d%C3%ADa+tan+especial" target="_blank" class="anim-element anim-fade-up delay-4 btn-solid">Agendar Evento</a>
 
-            <div class="anim-element anim-fade-up delay-4 photo-frame" style="margin-top: 70px;">
+            <div class="anim-element anim-fade-up delay-4 photo-frame" style="margin-top: 50px;">
                 <img src="assets/foto5.jpg" alt="Sesión" onerror="this.style.display='none'">
             </div>
         </section>
 
         <!-- Familia -->
-        <section class="section-block bg-base" style="background-color: #f0e7dc;">
-            <img src="assets/cerezo.png" class="floral-img anim-element anim-zoom delay-1" style="bottom: 10%; left: -30px; transform: rotate(20deg);" alt="">
+        <section class="section-block">
+            <img src="assets/cerezo.png" class="floral-img anim-element anim-zoom delay-1" style="bottom: 10%; left: -50px; transform: rotate(20deg);" alt="">
 
-            <div class="anim-element anim-fade-up delay-1 info-title">Con el amor de mis padres</div>
-            <div class="anim-element anim-fade-up delay-2 info-data">Ricardo Pérez Sánchez</div>
-            <div class="anim-element anim-fade-up delay-3" style="font-family: 'Cinzel', serif; font-size: 20px; color: var(--gold-premium); margin: 15px 0;">&</div>
-            <div class="anim-element anim-fade-up delay-3 info-data">Claudia Teresita Juárez Ochoa</div>
-            
-            <div class="anim-element anim-zoom delay-4 line-horizontal"></div>
-            
-            <div class="anim-element anim-fade-up delay-4 info-title">Y mis Padrinos</div>
-            <div class="anim-element anim-fade-up delay-4 info-data" style="font-size: 28px;">Blanca Juárez Ochoa</div>
-            <div class="anim-element anim-fade-up delay-4 info-data" style="font-size: 28px;">Ana Karen García Soberanis</div>
+            <div class="editorial-frame anim-element anim-fade-up delay-1">
+                <div class="info-title">Con el amor de mis padres</div>
+                <div class="info-data">Ricardo Pérez Sánchez</div>
+                <div style="font-family: 'Cinzel', serif; font-size: 20px; color: var(--gold-premium); margin: 15px 0;">&</div>
+                <div class="info-data">Claudia Teresita Juárez Ochoa</div>
+                
+                <div class="line-horizontal"></div>
+                
+                <div class="info-title">Y mis Padrinos</div>
+                <div class="info-data" style="font-size: 26px;">Blanca Juárez Ochoa</div>
+                <div class="info-data" style="font-size: 26px;">Ana Karen García Soberanis</div>
+            </div>
 
-            <div class="anim-element anim-fade-up delay-4 photo-frame" style="margin-top: 70px;">
+            <div class="anim-element anim-fade-up delay-4 photo-frame" style="margin-top: 50px;">
                 <img src="assets/foto2.jpg" alt="Familia" onerror="this.style.display='none'">
             </div>
         </section>
 
-        <!-- Itinerario -->
-        <section class="section-block bg-base">
+        <!-- Nuevo Itinerario Editorial -->
+        <section class="section-block">
+            <div class="vertical-accent">일정표</div>
+            
             <div class="anim-element anim-fade-up delay-1 info-title">Itinerario</div>
-            <div class="anim-element anim-fade-up delay-2 info-data" style="font-size: 40px; margin-bottom: 40px;">Nuestro Día</div>
+            <div class="anim-element anim-fade-up delay-2 info-data" style="font-size: 40px; margin-bottom: 20px;">Nuestro Día</div>
 
-            <div class="anim-element anim-fade-up delay-3 timeline">
-                <div class="timeline-item">
-                    <div class="timeline-time">13:30</div>
-                    <div class="timeline-dot"></div>
-                    <div class="timeline-content">Cóctel de bienvenida</div>
+            <div class="anim-element anim-fade-up delay-3 itinerary-grid">
+                <div class="itinerary-item">
+                    <div class="itinerary-time">13:30</div>
+                    <div class="itinerary-desc">Cóctel de bienvenida</div>
                 </div>
-                <div class="timeline-item">
-                    <div class="timeline-time">14:20</div>
-                    <div class="timeline-dot"></div>
-                    <div class="timeline-content">Presentación & vals</div>
+                <div class="itinerary-item">
+                    <div class="itinerary-time">14:20</div>
+                    <div class="itinerary-desc">Presentación & vals</div>
                 </div>
-                <div class="timeline-item">
-                    <div class="timeline-time">14:45</div>
-                    <div class="timeline-dot"></div>
-                    <div class="timeline-content">Comida de celebración</div>
+                <div class="itinerary-item">
+                    <div class="itinerary-time">14:45</div>
+                    <div class="itinerary-desc">Comida de celebración</div>
                 </div>
-                <div class="timeline-item">
-                    <div class="timeline-time">15:25</div>
-                    <div class="timeline-dot"></div>
-                    <div class="timeline-content">Brindis</div>
+                <div class="itinerary-item">
+                    <div class="itinerary-time">15:25</div>
+                    <div class="itinerary-desc">Brindis</div>
                 </div>
-                <div class="timeline-item">
-                    <div class="timeline-time">15:45</div>
-                    <div class="timeline-dot"></div>
-                    <div class="timeline-content">Show de Xime</div>
+                <div class="itinerary-item">
+                    <div class="itinerary-time">15:45</div>
+                    <div class="itinerary-desc">Show de Xime</div>
                 </div>
-                <div class="timeline-item">
-                    <div class="timeline-time">16:00</div>
-                    <div class="timeline-dot"></div>
-                    <div class="timeline-content">Momento de bailar</div>
+                <div class="itinerary-item">
+                    <div class="itinerary-time">16:00</div>
+                    <div class="itinerary-desc">Momento de bailar</div>
                 </div>
-                <div class="timeline-item">
-                    <div class="timeline-time">18:00</div>
-                    <div class="timeline-dot"></div>
-                    <div class="timeline-content">Corte del pastel</div>
+                <div class="itinerary-item">
+                    <div class="itinerary-time">18:00</div>
+                    <div class="itinerary-desc">Corte del pastel</div>
                 </div>
-                <div class="timeline-item">
-                    <div class="timeline-time">19:00</div>
-                    <div class="timeline-dot"></div>
-                    <div class="timeline-content">Un nuevo paso</div>
+                <div class="itinerary-item">
+                    <div class="itinerary-time">19:00</div>
+                    <div class="itinerary-desc">Un nuevo paso</div>
                 </div>
-                <div class="timeline-item">
-                    <div class="timeline-time">19:30</div>
-                    <div class="timeline-dot"></div>
-                    <div class="timeline-content">Sorpresa de la noche</div>
+                <div class="itinerary-item">
+                    <div class="itinerary-time">19:30</div>
+                    <div class="itinerary-desc">Sorpresa de la noche</div>
                 </div>
-                <div class="timeline-item">
-                    <div class="timeline-time">20:30</div>
-                    <div class="timeline-dot"></div>
-                    <div class="timeline-content">Última canción</div>
+                <div class="itinerary-item">
+                    <div class="itinerary-time">20:30</div>
+                    <div class="itinerary-desc">Última canción</div>
                 </div>
-                <div class="timeline-item">
-                    <div class="timeline-time">20:35</div>
-                    <div class="timeline-dot"></div>
-                    <div class="timeline-content">Última aventura</div>
+                <div class="itinerary-item">
+                    <div class="itinerary-time">20:35</div>
+                    <div class="itinerary-desc">Última aventura</div>
                 </div>
-                <div class="timeline-item">
-                    <div class="timeline-time">20:40</div>
-                    <div class="timeline-dot"></div>
-                    <div class="timeline-content" style="color: var(--hero-red);">¡Gracias por ser parte de esta noche!</div>
+                <div class="itinerary-item" style="background-color: var(--black-premium); border-color: var(--black-premium);">
+                    <div class="itinerary-time" style="color: var(--gold-premium);">20:40</div>
+                    <div class="itinerary-desc" style="color: #fff;">¡Gracias por ser parte!</div>
                 </div>
             </div>
         </section>
 
         <!-- Ubicaciones -->
-        <section class="section-block bg-base" style="background-color: #f0e7dc;">
-            <img src="assets/cerezo.png" class="floral-img anim-element anim-zoom delay-1" style="top: 5%; left: -20px; transform: rotate(45deg);" alt="">
-            <img src="assets/cerezo2.png" class="floral-img anim-element anim-zoom delay-3" style="bottom: 30%; right: -25px; transform: rotate(-15deg);" alt="">
+        <section class="section-block">
+            <img src="assets/cerezo.png" class="floral-img anim-element anim-zoom delay-1" style="top: 5%; left: -40px; transform: rotate(45deg);" alt="">
+            <img src="assets/cerezo2.png" class="floral-img anim-element anim-zoom delay-3" style="bottom: 30%; right: -40px; transform: rotate(-15deg);" alt="">
 
             <div class="anim-element anim-fade-up delay-1 info-title">Ceremonia</div>
             <div class="anim-element anim-fade-up delay-2 info-data">Jardín Quinta Aidel</div>
-            <div class="anim-element anim-fade-up delay-3 tag-line" style="font-size: 14px; margin: 15px 0; color: var(--hero-red); font-weight: 600;">12:20 p.m.</div>
+            <div class="anim-element anim-fade-up delay-3 tag-line" style="font-size: 14px; margin: 15px 0; color: var(--text-muted);">12:20 p.m.</div>
             
             <div class="anim-element anim-zoom delay-4 map-box">
                 <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3771.1217729058085!2d-98.29737449999999!3d19.058382899999998!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x85cfc6302eccb6c1%3A0x86ccd6c037c3c587!2sQuinta%20Aidel%20-%20La%20Quinta%20de%20Cholula!5e0!3m2!1ses-419!2smx!4v1787000797397!5m2!1ses-419!2smx" allowfullscreen="" loading="lazy" referrerpolicy="strict-origin-when-cross-origin"></iframe>
             </div>
             <a href="https://maps.app.goo.gl/z6wsLEtzufrvP5Jg8?g_st=aw" target="_blank" class="anim-element anim-fade-up delay-4 btn-solid">Ver Ubicación</a>
 
-            <div class="anim-element anim-zoom line-horizontal" style="margin: 60px auto;"></div>
+            <div class="anim-element anim-zoom line-horizontal" style="margin: 50px auto;"></div>
 
             <div class="anim-element anim-fade-up delay-1 info-title">Recepción</div>
             <div class="anim-element anim-fade-up delay-2 info-data">Salón Quinta Aidel</div>
-            <div class="anim-element anim-fade-up delay-3 tag-line" style="font-size: 14px; margin: 15px 0; color: var(--hero-red); font-weight: 600;">1:30 p.m.</div>
+            <div class="anim-element anim-fade-up delay-3 tag-line" style="font-size: 14px; margin: 15px 0; color: var(--text-muted);">1:30 p.m.</div>
             
             <div class="anim-element anim-zoom delay-4 map-box">
                 <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3771.1217729058085!2d-98.29737449999999!3d19.058382899999998!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x85cfc6302eccb6c1%3A0x86ccd6c037c3c587!2sQuinta%20Aidel%20-%20La%20Quinta%20de%20Cholula!5e0!3m2!1ses-419!2smx!4v1787000826841!5m2!1ses-419!2smx" allowfullscreen="" loading="lazy" referrerpolicy="strict-origin-when-cross-origin"></iframe>
             </div>
             <a href="https://maps.app.goo.gl/z6wsLEtzufrvP5Jg8?g_st=aw" target="_blank" class="anim-element anim-fade-up delay-4 btn-solid">Ver Ubicación</a>
 
-            <div class="anim-element anim-fade-up delay-4 photo-frame" style="margin-top: 70px;">
+            <div class="anim-element anim-fade-up delay-4 photo-frame" style="margin-top: 60px;">
                 <img src="assets/foto6.jpg" alt="Momentos" onerror="this.style.display='none'">
             </div>
         </section>
 
         <!-- Dress Code -->
         <section class="section-block bg-black">
+            <div class="vertical-accent" style="color: rgba(255,255,255,0.1);">드레스 코드</div>
             <div class="anim-element anim-fade-up delay-1 info-title" style="color: var(--gold-premium);">Dress Code</div>
-            <div class="anim-element anim-fade-up delay-2 info-data" style="font-family: 'Cinzel', serif; font-size: 35px; margin: 25px 0; letter-spacing: 5px; color: #fff;">
+            <div class="anim-element anim-fade-up delay-2 info-data" style="font-family: 'Cinzel', serif; font-size: 32px; margin: 20px 0; letter-spacing: 5px; color: #fff;">
                 FORMAL ELEGANTE
             </div>
-            <div class="anim-element anim-fade-up delay-3 line-divider" style="background-color: var(--gold-premium); height: 40px;"></div>
+            <div class="anim-element anim-fade-up delay-3 line-divider" style="background-color: var(--gold-premium); height: 30px;"></div>
             
-            <p class="anim-element anim-fade-up delay-4 body-serif" style="color: #ccc; font-size: 21px; max-width: 700px;">
-                Con cariño les pedimos <strong style="color: var(--hero-red); font-weight: 600;">evitar el color Rojo</strong>, para permitir que Xime luzca el tono protagonista de esta celebración.
+            <p class="anim-element anim-fade-up delay-4 body-serif" style="color: #ccc; font-size: 21px; max-width: 600px;">
+                Con cariño les pedimos <span style="color: var(--hero-red); font-weight: 600; font-style: normal;">evitar el color Rojo</span>, para permitir que Xime luzca el tono protagonista de esta celebración.
             </p>
 
-            <div class="anim-element anim-fade-up delay-4" style="margin-top: 40px; font-family: 'Cinzel', serif; font-size: 16px; color: var(--gold-premium); letter-spacing: 3px; text-transform: uppercase;">
+            <div class="anim-element anim-fade-up delay-4" style="margin-top: 40px; font-family: 'Cinzel', serif; font-size: 14px; color: var(--gold-premium); letter-spacing: 3px; text-transform: uppercase;">
                 Paleta Sugerida
             </div>
             
@@ -598,90 +600,93 @@
                 </div>
                 <div class="color-item">
                     <div class="color-circle" style="background-color: #D9A6A6;"></div>
-                    <div class="color-name">Rosa Empolvado</div>
+                    <div class="color-name">Rosa<br>Empolvado</div>
                 </div>
                 <div class="color-item">
                     <div class="color-circle" style="background-color: #111111;"></div>
-                    <div class="color-name">Negro Elegante</div>
+                    <div class="color-name">Negro<br>Elegante</div>
                 </div>
             </div>
 
-            <div class="anim-element anim-fade-up delay-4 photo-frame" style="margin-top: 70px;">
+            <div class="anim-element anim-fade-up delay-4 photo-frame" style="margin-top: 60px;">
                 <img src="assets/foto3.jpg" alt="Dress Code" onerror="this.style.display='none'">
             </div>
         </section>
 
         <!-- Mesa de Regalos -->
-        <section class="section-block bg-base">
-            <img src="assets/cerezo.png" class="floral-img anim-element anim-zoom delay-1" style="top: 10%; right: -25px; transform: rotate(-30deg);" alt="">
+        <section class="section-block">
+            <img src="assets/cerezo.png" class="floral-img anim-element anim-zoom delay-1" style="top: 10%; right: -30px; transform: rotate(-30deg);" alt="">
 
-            <div class="anim-element anim-fade-up delay-1 info-title">Mesa de Regalos</div>
-            <svg class="anim-element anim-zoom delay-2" viewBox="0 0 24 24" style="width: 55px; height: 55px; fill: var(--hero-red); margin: 20px 0; position: relative; z-index: 2;">
-                <path d="M20 4H4C2.9 4 2.01 4.9 2.01 6L2 18c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z"/>
-            </svg>
-            <p class="anim-element anim-fade-up delay-3 body-serif" style="margin-top: 10px; font-size: 22px;">
-                El obsequio más hermoso es tu presencia. Si deseas tener un detalle adicional, puedes hacerlo a través de nuestras mesas de regalos.
-            </p>
+            <div class="editorial-frame anim-element anim-fade-up delay-1">
+                <div class="info-title">Mesa de Regalos</div>
+                <svg viewBox="0 0 24 24" style="width: 45px; height: 45px; fill: var(--hero-red); margin: 15px 0;">
+                    <path d="M20 4H4C2.9 4 2.01 4.9 2.01 6L2 18c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z"/>
+                </svg>
+                <p class="body-serif" style="margin-top: 10px; font-size: 21px;">
+                    El obsequio más hermoso es tu presencia. Si deseas tener un detalle adicional, puedes hacerlo a través de nuestras mesas de regalos.
+                </p>
 
-            <a href="https://www.amazon.com.mx/registries/gl/guest-view/2E30I3ZF8MRQW?ref_=cm_sw_r_mwn_ggr-subnav-share_4MD3972VS9J8NSPBKGX3&language=en-US" target="_blank" class="anim-element anim-fade-up delay-4 btn-solid" style="margin-bottom: 20px;">Mesa en Amazon</a>
-            
-            <div class="anim-element anim-fade-up delay-4" style="margin-top: 20px; font-family: 'Montserrat', sans-serif; font-size: 15px; color: var(--text-dark); border: 1px solid rgba(196, 154, 90, 0.4); padding: 30px; border-radius: 4px; background: #fff; max-width: 400px; width: 100%; position: relative; z-index: 2;">
-                <div style="margin-bottom: 15px; text-transform: uppercase; font-size: 15px; color: var(--hero-red); font-weight: 600; letter-spacing: 2px;">Liverpool</div>
-                <div style="margin-bottom: 10px; font-size: 18px;">Evento: <strong>5200657</strong></div>
-                <div style="font-family: 'Cormorant Garamond', serif; font-size: 22px; font-style: italic; color: var(--text-muted);">XV años - Xime</div>
+                <a href="https://www.amazon.com.mx/registries/gl/guest-view/2E30I3ZF8MRQW?ref_=cm_sw_r_mwn_ggr-subnav-share_4MD3972VS9J8NSPBKGX3&language=en-US" target="_blank" class="btn-solid" style="margin-bottom: 20px;">Mesa en Amazon</a>
+                
+                <div style="margin-top: 20px; border-top: 1px dashed rgba(196, 154, 90, 0.4); padding-top: 20px;">
+                    <div style="margin-bottom: 10px; text-transform: uppercase; font-size: 13px; color: var(--text-dark); font-weight: 600; letter-spacing: 2px;">Liverpool</div>
+                    <div style="margin-bottom: 5px; font-size: 16px; font-family: 'Montserrat', sans-serif;">Evento: <strong>5200657</strong></div>
+                    <div style="font-family: 'Cormorant Garamond', serif; font-size: 20px; font-style: italic; color: var(--text-muted);">XV años - Xime</div>
+                </div>
             </div>
 
-            <div class="anim-element anim-fade-up delay-4 photo-frame" style="margin-top: 70px;">
+            <div class="anim-element anim-fade-up delay-4 photo-frame" style="margin-top: 50px;">
                 <img src="assets/foto7.jpg" alt="Regalos" onerror="this.style.display='none'">
             </div>
         </section>
 
         <!-- Playlist -->
-        <section class="section-block bg-base" style="background-color: #f0e7dc;">
-            <img src="assets/cerezo2.png" class="floral-img anim-element anim-zoom delay-1" style="bottom: 15%; left: -20px; transform: rotate(15deg);" alt="">
+        <section class="section-block">
+            <img src="assets/cerezo2.png" class="floral-img anim-element anim-zoom delay-1" style="bottom: 15%; left: -30px; transform: rotate(15deg);" alt="">
 
             <div class="anim-element anim-fade-up delay-1 info-title">Música</div>
-            <div class="anim-element anim-fade-up delay-2 info-data" style="font-size: 40px;">Nuestra Playlist</div>
-            <p class="anim-element anim-fade-up delay-3 body-serif" style="margin: 20px auto 40px auto; font-size: 22px;">
+            <div class="anim-element anim-fade-up delay-2 info-data" style="font-size: 36px;">Nuestra Playlist</div>
+            <p class="anim-element anim-fade-up delay-3 body-serif" style="margin: 15px auto 30px auto; font-size: 21px;">
                 Ayúdame a crear el ambiente perfecto agregando tus canciones favoritas para la pista de baile.
             </p>
             
             <div class="anim-element anim-zoom delay-4" style="width: 100%; max-width: 480px; position: relative; z-index: 2;">
-                <iframe data-testid="embed-iframe" style="border-radius:12px; box-shadow: 0 15px 40px rgba(0,0,0,0.08); border: 1px solid rgba(196, 154, 90, 0.3);" src="https://open.spotify.com/embed/playlist/5j8WsFz4DBWwgK4eVGhvm9?utm_source=generator&theme=0&si=c27e93132fb74e2e" width="100%" height="352" frameBorder="0" allowfullscreen="" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe>
+                <iframe data-testid="embed-iframe" style="border-radius:2px; border: 1px solid rgba(196, 154, 90, 0.3);" src="https://open.spotify.com/embed/playlist/5j8WsFz4DBWwgK4eVGhvm9?utm_source=generator&theme=0&si=c27e93132fb74e2e" width="100%" height="352" frameBorder="0" allowfullscreen="" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe>
             </div>
             
             <a href="https://open.spotify.com/playlist/5j8WsFz4DBWwgK4eVGhvm9?si=a307afbcfc6047ba&pt=e9303a06ff1b07049b11562e68212ad5" target="_blank" class="anim-element anim-fade-up delay-4 btn-solid">Agregar Canciones</a>
 
-            <div class="anim-element anim-fade-up delay-4 photo-frame" style="margin-top: 70px;">
+            <div class="anim-element anim-fade-up delay-4 photo-frame" style="margin-top: 60px;">
                 <img src="assets/foto8.jpg" alt="Fiesta" onerror="this.style.display='none'">
             </div>
         </section>
 
         <!-- Galería -->
-        <section class="section-block bg-base">
-            <img src="assets/cerezo.png" class="floral-img anim-element anim-zoom delay-1" style="top: 15%; left: -30px; transform: rotate(35deg);" alt="">
+        <section class="section-block">
+            <div class="vertical-accent left">순간들</div>
+            <img src="assets/cerezo.png" class="floral-img anim-element anim-zoom delay-1" style="top: 15%; left: -40px; transform: rotate(35deg);" alt="">
 
             <div class="anim-element anim-fade-up delay-1 info-title">Momentos</div>
-            <div class="anim-element anim-fade-up delay-2 info-data" style="font-size: 40px;">Galería en Vivo</div>
-            <p class="anim-element anim-fade-up delay-3 body-serif" style="margin: 25px auto; font-size: 22px;">
+            <div class="anim-element anim-fade-up delay-2 info-data" style="font-size: 36px;">Galería en Vivo</div>
+            <p class="anim-element anim-fade-up delay-3 body-serif" style="margin: 20px auto; font-size: 21px;">
                 Captura la magia de esta noche. Comparte todas las fotos y videos que tomes directamente en nuestro álbum digital.<br><br>
-                <span style="font-size: 15px; font-family: 'Montserrat', sans-serif; font-style: normal; font-weight: 500; color: var(--text-muted);">
-                    Te sugerimos tener instalada la app de <strong>Google Drive</strong> para subir tus archivos fácilmente.
+                <span style="font-size: 14px; font-family: 'Montserrat', sans-serif; font-style: normal; font-weight: 500; color: var(--text-muted);">
+                    Te sugerimos tener instalada la app de <strong>Google Drive</strong>.
                 </span>
             </p>
             <a href="https://drive.google.com/drive/folders/1J70dLjIUmsZ0_SIO1CkpFUSN5PpXM-y1?usp=sharing" target="_blank" class="anim-element anim-fade-up delay-4 btn-solid">Subir mis Fotos</a>
 
-            <div class="anim-element anim-fade-up delay-4 photo-frame" style="margin-top: 70px;">
+            <div class="anim-element anim-fade-up delay-4 photo-frame" style="margin-top: 60px;">
                 <img src="assets/foto4.jpg" alt="Momentos" onerror="this.style.display='none'">
             </div>
         </section>
 
         <!-- RSVP y Pases -->
-        <section class="section-block bg-base" style="background-color: #f0e7dc;">
-            <img src="assets/cerezo2.png" class="floral-img anim-element anim-zoom delay-1" style="top: -20px; right: -20px; transform: rotate(-10deg);" alt="">
-            <img src="assets/cerezo.png" class="floral-img anim-element anim-zoom delay-4" style="bottom: 10%; left: -30px; transform: rotate(25deg);" alt="">
+        <section class="section-block">
+            <img src="assets/cerezo2.png" class="floral-img anim-element anim-zoom delay-1" style="top: -30px; right: -30px; transform: rotate(-10deg);" alt="">
+            <img src="assets/cerezo.png" class="floral-img anim-element anim-zoom delay-4" style="bottom: 10%; left: -40px; transform: rotate(25deg);" alt="">
 
-            <div class="anim-element anim-fade-up delay-1 photo-frame" style="margin-bottom: 70px; margin-top: 0;">
+            <div class="anim-element anim-fade-up delay-1 photo-frame" style="margin-bottom: 50px; margin-top: 0;">
                 <img src="assets/foto9.jpg" alt="Detalles" onerror="this.style.display='none'">
             </div>
 
@@ -692,25 +697,25 @@
                     <div class="ticket-border-inner"></div>
                     <div class="tag-line" style="margin-bottom: 20px; color: var(--gold-premium);">Boleto VIP</div>
                     
-                    <div id="ticket-name" style="font-family: 'Cormorant Garamond', serif; font-size: 32px; color: #fff; font-style: italic; margin-bottom: 15px; font-weight: 500; line-height: 1.2;">
+                    <div id="ticket-name" style="font-family: 'Cormorant Garamond', serif; font-size: 28px; color: #fff; font-style: italic; margin-bottom: 15px; font-weight: 500; line-height: 1.2;">
                         Invitado Especial
                     </div>
 
-                    <div class="body-serif" style="font-size: 20px; margin-bottom: 15px; color: #ccc;">Pases Asignados</div>
-                    <div id="ticket-count" style="font-family: 'Cinzel', serif; font-size: 70px; font-weight: 600; color: var(--gold-premium); line-height: 1;">
+                    <div class="body-serif" style="font-size: 18px; margin-bottom: 10px; color: #ccc;">Pases Asignados</div>
+                    <div id="ticket-count" style="font-family: 'Cinzel', serif; font-size: 65px; font-weight: 600; color: var(--gold-premium); line-height: 1;">
                         0
                     </div>
-                    <div style="font-family: 'Montserrat', sans-serif; font-size: 11px; font-weight: 500; text-transform: uppercase; letter-spacing: 3px; color: #888; margin-top: 35px;">
+                    <div style="font-family: 'Montserrat', sans-serif; font-size: 10px; font-weight: 500; text-transform: uppercase; letter-spacing: 3px; color: #888; margin-top: 30px;">
                         Muestra esta pantalla al llegar
                     </div>
                 </div>
-                <div class="anim-element anim-fade-up line-horizontal" style="margin: 60px auto;"></div>
+                <div class="anim-element anim-fade-up line-horizontal" style="margin: 50px auto;"></div>
             </div>
 
             <!-- Formulario RSVP -->
             <div class="anim-element anim-fade-up delay-1 info-title">RSVP</div>
-            <div class="anim-element anim-fade-up delay-2 info-data" style="font-size: 40px;">Confirmar Asistencia</div>
-            <p class="anim-element anim-fade-up delay-3 body-serif" style="margin: 15px auto 35px auto; font-size: 22px;">
+            <div class="anim-element anim-fade-up delay-2 info-data" style="font-size: 36px;">Confirmar Asistencia</div>
+            <p class="anim-element anim-fade-up delay-3 body-serif" style="margin: 15px auto 30px auto; font-size: 20px;">
                 Agradeceremos tu confirmación lo antes posible.
             </p>
             
@@ -731,20 +736,20 @@
                 </select>
             </div>
             
-            <button onclick="sendRSVP()" class="anim-element anim-fade-up delay-4 btn-solid" style="margin-bottom: 70px;">Confirmar por WhatsApp</button>
+            <button onclick="sendRSVP()" class="anim-element anim-fade-up delay-4 btn-solid" style="margin-bottom: 50px;">Confirmar por WhatsApp</button>
 
             <div class="anim-element anim-zoom line-divider"></div>
 
             <!-- Muro de Deseos -->
             <div class="anim-element anim-fade-up delay-1 info-title">Mensajes</div>
-            <div class="anim-element anim-fade-up delay-2 info-data" style="font-size: 40px;">Muro de los Deseos</div>
-            <div class="anim-element anim-fade-up delay-3 form-group" style="margin-top: 30px;">
+            <div class="anim-element anim-fade-up delay-2 info-data" style="font-size: 36px;">Muro de los Deseos</div>
+            <div class="anim-element anim-fade-up delay-3 form-group" style="margin-top: 25px;">
                 <input type="text" id="wish-name" class="input-line" placeholder="De parte de...">
             </div>
             <div class="anim-element anim-fade-up delay-4 form-group">
                 <textarea id="wish-message" class="input-line" placeholder="Deja un lindo mensaje para Xime..."></textarea>
             </div>
-            <button onclick="sendWish()" class="anim-element anim-fade-up delay-4 btn-solid" style="margin-bottom: 70px;">Enviar Mensaje</button>
+            <button onclick="sendWish()" class="anim-element anim-fade-up delay-4 btn-solid" style="margin-bottom: 50px;">Enviar Mensaje</button>
 
             <div class="anim-element anim-fade-up delay-4 photo-frame" style="margin-bottom: 0;">
                 <img src="assets/foto10.jpg" alt="Despedida" onerror="this.style.display='none'">
@@ -817,14 +822,13 @@
         let nombreInvitado = "Invitado Especial";
         const urlParams = new URLSearchParams(window.location.search);
         
-        // El número proporcionado para confirmaciones y deseos
+        // Número proporcionado para confirmaciones y deseos
         const currentPhoneNumber = "522225572697";
 
-        // Mapeo básico de IDs (puedes inyectar tu base de datos completa aquí como en el original)
+        // Mapeo básico de IDs
         const dbInvitados = {
             "1": { nombre: "Familia Ejemplo", pases: 4 },
             "2": { nombre: "Amigos", pases: 2 }
-            // ... agregar más invitados según necesidad
         };
 
         let parametroId = urlParams.get('id');
