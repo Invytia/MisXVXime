@@ -165,7 +165,7 @@
         }
         .vertical-accent.left { right: auto; left: 10px; }
 
-        /* Cerezos Flotantes Sutiles (No tapan texto) */
+        /* Cerezos Flotantes Sutiles */
         .floral-img {
             position: absolute; pointer-events: none; z-index: 0; opacity: 0.15; max-width: 140px;
             mix-blend-mode: multiply; 
@@ -501,6 +501,7 @@
             <img src="assets/cerezo.png" class="floral-img anim-element anim-zoom delay-1" style="top: 5%; left: -60px; transform: rotate(45deg);" alt="">
             <img src="assets/cerezo2.png" class="floral-img anim-element anim-zoom delay-3" style="bottom: 30%; right: -60px; transform: rotate(-15deg);" alt="">
 
+            <!-- Ceremonia -->
             <div class="anim-element anim-fade-up delay-1 info-title">Ceremonia</div>
             <div class="anim-element anim-fade-up delay-2 info-data">Jardín Quinta Aidel</div>
             <div class="anim-element anim-fade-up delay-3 tag-line" style="font-size: 14px; margin: 10px 0; color: var(--text-muted);">12:20 p.m.</div>
@@ -510,8 +511,13 @@
             </div>
             <a href="https://maps.app.goo.gl/z6wsLEtzufrvP5Jg8?g_st=aw" target="_blank" class="anim-element anim-fade-up delay-4 btn-solid">Ver Ubicación</a>
 
-            <div style="height: 40px;"></div>
+            <div class="anim-element anim-fade-up delay-4 photo-frame" style="margin-top: 40px;">
+                <img src="assets/ubi.jpg" alt="Ceremonia" onerror="this.style.display='none'">
+            </div>
 
+            <div style="height: 60px;"></div>
+
+            <!-- Recepción -->
             <div class="anim-element anim-fade-up delay-1 info-title">Recepción</div>
             <div class="anim-element anim-fade-up delay-2 info-data">Salón Quinta Aidel</div>
             <div class="anim-element anim-fade-up delay-3 tag-line" style="font-size: 14px; margin: 10px 0; color: var(--text-muted);">1:30 p.m.</div>
@@ -521,8 +527,8 @@
             </div>
             <a href="https://maps.app.goo.gl/z6wsLEtzufrvP5Jg8?g_st=aw" target="_blank" class="anim-element anim-fade-up delay-4 btn-solid">Ver Ubicación</a>
 
-            <div class="anim-element anim-fade-up delay-4 photo-frame">
-                <img src="assets/foto6.jpg" alt="Momentos" onerror="this.style.display='none'">
+            <div class="anim-element anim-fade-up delay-4 photo-frame" style="margin-top: 40px;">
+                <img src="assets/ubi2.jpg" alt="Recepción" onerror="this.style.display='none'">
             </div>
         </section>
 
@@ -583,16 +589,17 @@
                 <svg viewBox="0 0 24 24" style="width: 40px; height: 40px; fill: var(--hero-red); margin: 15px 0;">
                     <path d="M20 4H4C2.9 4 2.01 4.9 2.01 6L2 18c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z"/>
                 </svg>
-                <p class="body-serif" style="font-size: 21px;">
+                <p class="body-serif" style="font-size: 21px; margin-bottom: 25px;">
                     El obsequio más hermoso es tu presencia. Si deseas tener un detalle adicional, puedes hacerlo a través de nuestras mesas de regalos.
                 </p>
 
                 <a href="https://www.amazon.com.mx/registries/gl/guest-view/2E30I3ZF8MRQW?ref_=cm_sw_r_mwn_ggr-subnav-share_4MD3972VS9J8NSPBKGX3&language=en-US" target="_blank" class="btn-solid" style="margin-bottom: 20px;">Mesa en Amazon</a>
                 
-                <div style="margin-top: 20px;">
+                <div style="margin-top: 30px;">
                     <div style="margin-bottom: 10px; text-transform: uppercase; font-size: 13px; color: var(--text-dark); font-weight: 600; letter-spacing: 2px;">Liverpool</div>
-                    <div style="margin-bottom: 5px; font-size: 16px; font-family: 'Montserrat', sans-serif;">Evento: <strong>5200657</strong></div>
-                    <div style="font-family: 'Cormorant Garamond', serif; font-size: 20px; font-style: italic; color: var(--text-muted);">XV años - Xime</div>
+                    <div style="margin-bottom: 10px; font-size: 16px; font-family: 'Montserrat', sans-serif;">Evento: <strong>5200657</strong></div>
+                    <div style="font-family: 'Cormorant Garamond', serif; font-size: 20px; font-style: italic; color: var(--text-muted); margin-bottom: 20px;">XV años - Xime</div>
+                    <a href="https://mesaderegalos.liverpool.com.mx/milistaderegalos/52006573" target="_blank" class="btn-solid" style="margin-top: 0;">Mesa en Liverpool</a>
                 </div>
             </div>
 
