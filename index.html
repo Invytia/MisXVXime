@@ -373,12 +373,12 @@
                 <h1 class="title-script hero-text">Xime</h1>
                 
                 <p class="body-serif" style="margin-top: 20px;">
-                    "La vida es un escenario y este día brillaré con la fuerza de mi esencia, el ritmo su corazón y la magia de un sueño hecho realidad "
+                    "La vida es un escenario y este día brillaré con la fuerza de mi esencia, el ritmo de su corazón y la magia de un sueño hecho realidad "
                 </p>
             </div>
 
             <div class="anim-element anim-fade-up delay-4 photo-frame">
-                <img src="assets/foto1.jpg" alt="Xime" onerror="this.style.display='none'">
+                <img src="assets/1.jpg" alt="Xime" onerror="this.style.display='none'">
             </div>
         </section>
 
@@ -406,7 +406,7 @@
             <a href="https://calendar.google.com/calendar/render?action=TEMPLATE&text=XV+A%C3%B1os+de+Xime&dates=20261115T182000Z/20261116T020000Z&details=Celebremos+juntos+este+d%C3%ADa+tan+especial" target="_blank" class="anim-element anim-fade-up delay-4 btn-solid">Agendar Evento</a>
 
             <div class="anim-element anim-fade-up delay-4 photo-frame">
-                <img src="assets/foto5.jpg" alt="Sesión" onerror="this.style.display='none'">
+                <img src="assets/2.jpg" alt="Sesión" onerror="this.style.display='none'">
             </div>
         </section>
 
@@ -428,7 +428,7 @@
             </div>
 
             <div class="anim-element anim-fade-up delay-4 photo-frame">
-                <img src="assets/foto2.jpg" alt="Familia" onerror="this.style.display='none'">
+                <img src="assets/3.jpg" alt="Familia" onerror="this.style.display='none'">
             </div>
         </section>
 
@@ -490,9 +490,13 @@
                 </div>
                 <div class="itinerary-item" style="border-bottom: none; margin-top: 10px;">
                     <div class="itinerary-desc" style="color: var(--hero-red); font-weight: 600; border-left: none; padding-left: 0; text-align: center; width: 100%;">
-                        ¡Gracias por ser parte!
+                        ¡Gracias por ser parte de mis XV!
                     </div>
                 </div>
+            </div>
+
+            <div class="anim-element anim-fade-up delay-4 photo-frame">
+                <img src="assets/4.jpg" alt="Itinerario" onerror="this.style.display='none'">
             </div>
         </section>
 
@@ -576,7 +580,7 @@
             </div>
 
             <div class="anim-element anim-fade-up delay-4 photo-frame">
-                <img src="assets/foto3.jpg" alt="Dress Code" onerror="this.style.display='none'">
+                <img src="assets/5.jpg" alt="Dress Code" onerror="this.style.display='none'">
             </div>
         </section>
 
@@ -604,7 +608,7 @@
             </div>
 
             <div class="anim-element anim-fade-up delay-4 photo-frame">
-                <img src="assets/foto7.jpg" alt="Regalos" onerror="this.style.display='none'">
+                <img src="assets/6.jpg" alt="Regalos" onerror="this.style.display='none'">
             </div>
         </section>
 
@@ -625,7 +629,7 @@
             <a href="https://open.spotify.com/playlist/5j8WsFz4DBWwgK4eVGhvm9?si=a307afbcfc6047ba&pt=e9303a06ff1b07049b11562e68212ad5" target="_blank" class="anim-element anim-fade-up delay-4 btn-solid">Agregar Canciones</a>
 
             <div class="anim-element anim-fade-up delay-4 photo-frame">
-                <img src="assets/foto8.jpg" alt="Fiesta" onerror="this.style.display='none'">
+                <img src="assets/7.jpg" alt="Fiesta" onerror="this.style.display='none'">
             </div>
         </section>
 
@@ -645,7 +649,7 @@
             <a href="https://drive.google.com/drive/folders/1J70dLjIUmsZ0_SIO1CkpFUSN5PpXM-y1?usp=sharing" target="_blank" class="anim-element anim-fade-up delay-4 btn-solid">Subir mis Fotos</a>
 
             <div class="anim-element anim-fade-up delay-4 photo-frame">
-                <img src="assets/foto4.jpg" alt="Momentos" onerror="this.style.display='none'">
+                <img src="assets/8.jpg" alt="Momentos" onerror="this.style.display='none'">
             </div>
         </section>
 
@@ -655,7 +659,7 @@
             <img src="assets/cerezo.png" class="floral-img anim-element anim-zoom delay-4" style="bottom: 10%; left: -70px; transform: rotate(25deg);" alt="">
 
             <div class="anim-element anim-fade-up delay-1 photo-frame" style="margin-top: 0;">
-                <img src="assets/foto9.jpg" alt="Detalles" onerror="this.style.display='none'">
+                <img src="assets/9.jpg" alt="Detalles" onerror="this.style.display='none'">
             </div>
 
             <!-- Tarjeta VIP Oculta Premium -->
@@ -717,7 +721,7 @@
             <button onclick="sendWish()" class="anim-element anim-fade-up delay-4 btn-solid">Enviar Mensaje</button>
 
             <div class="anim-element anim-fade-up delay-4 photo-frame" style="margin-bottom: 0; margin-top: 50px;">
-                <img src="assets/foto10.jpg" alt="Despedida" onerror="this.style.display='none'">
+                <img src="assets/10.jpg" alt="Despedida" onerror="this.style.display='none'">
             </div>
             
         </section>
@@ -782,18 +786,99 @@
             document.querySelectorAll('.anim-element').forEach(el => observer.observe(el));
         });
 
-        // --- LÓGICA DEL SISTEMA DE PASES ---
+        // --- LÓGICA DEL SISTEMA DE PASES PLATINUM ---
         let pasesAsignados = 0;
         let nombreInvitado = "Invitado Especial";
         const urlParams = new URLSearchParams(window.location.search);
         
-        // Número proporcionado para confirmaciones y deseos
         const currentPhoneNumber = "522225572697";
 
-        // Mapeo básico de IDs
+        // Base de Datos de Invitados Extraída del PDF
         const dbInvitados = {
-            "1": { nombre: "Familia Ejemplo", pases: 4 },
-            "2": { nombre: "Amigos", pases: 2 }
+            "1": { nombre: "Abu, Aba y madrina", pases: 3 },
+            "2": { nombre: "Madrina Lulú", pases: 1 },
+            "3": { nombre: "Sr. Harold Azcárraga y fam", pases: 3 },
+            "4": { nombre: "Bis Vito y Tía Cheli", pases: 2 },
+            "5": { nombre: "Tía Amalia Valencia", pases: 1 },
+            "6": { nombre: "Alejandra Colorado", pases: 1 },
+            "7": { nombre: "Claudia Palacios", pases: 1 },
+            "8": { nombre: "Angeles Flores", pases: 1 },
+            "9": { nombre: "Tía Carmelita y Tío Teo", pases: 2 },
+            "10": { nombre: "Tío Alonso y Primos", pases: 3 },
+            "11": { nombre: "Tíos Julio, Eli y primas", pases: 4 },
+            "12": { nombre: "Abuelito Beto y abuelita Luz", pases: 2 },
+            "13": { nombre: "Tío Alex", pases: 1 },
+            "14": { nombre: "Tia Mago y prima Cami", pases: 2 },
+            "15": { nombre: "Padrino Koki y primo Roger", pases: 2 },
+            "16": { nombre: "Tía Paquita", pases: 2 },
+            "17": { nombre: "Tia Amalia", pases: 3 },
+            "18": { nombre: "Miss Susi", pases: 2 },
+            "19": { nombre: "Miss Mary", pases: 2 },
+            "20": { nombre: "Miss Raque (Chiquis)", pases: 2 },
+            "21": { nombre: "Miss Paty", pases: 2 },
+            "22": { nombre: "Miss Oli", pases: 2 },
+            "23": { nombre: "Misa Gris", pases: 2 },
+            "24": { nombre: "Miss Isa", pases: 2 },
+            "25": { nombre: "Miss Pau", pases: 2 },
+            "26": { nombre: "Miss Fanny", pases: 2 },
+            "27": { nombre: "Miss Mayte", pases: 2 },
+            "28": { nombre: "Miss Julieta", pases: 2 },
+            "29": { nombre: "Querido profesor", pases: 1 },
+            "30": { nombre: "Querido Profesor", pases: 2 },
+            "31": { nombre: "Querida Miss", pases: 2 },
+            "32": { nombre: "Padrino Tavo y Juanpis", pases: 2 },
+            "33": { nombre: "Madrina Lore y Nico", pases: 2 },
+            "34": { nombre: "Miss Sol", pases: 2 },
+            "35": { nombre: "Tio Oscar", pases: 2 },
+            "36": { nombre: "Profe Fredy", pases: 2 },
+            "37": { nombre: "Marisol Cortes", pases: 2 },
+            "38": { nombre: "Tíos Alejandro y Yuli", pases: 2 },
+            "39": { nombre: "Tías Aidesita y Yuli", pases: 3 },
+            "40": { nombre: "Tíos Nasul, Emilú y Alejandrito", pases: 3 },
+            "41": { nombre: "Tía Fila", pases: 1 },
+            "42": { nombre: "Tíos Augusto y Norma", pases: 2 },
+            "43": { nombre: "Tío Manuel, tia Irma y Vale", pases: 3 },
+            "44": { nombre: "Tíos Raúl, Mima y Fabricio", pases: 3 },
+            "45": { nombre: "Tías Gume, Paty y Criss", pases: 3 },
+            "46": { nombre: "Tia Aide", pases: 1 },
+            "47": { nombre: "Tío Asley y Fam.", pases: 5 },
+            "48": { nombre: "Señor Zenón Gonzáles y Fam.", pases: 5 },
+            "49": { nombre: "Señorita Pamela Itzel Serrano", pases: 2 },
+            "50": { nombre: "Señora Maribel Amador", pases: 2 },
+            "51": { nombre: "Bb Matthi", pases: 1 },
+            "52": { nombre: "Querida Fer, Iker y Nicky", pases: 3 },
+            "53": { nombre: "Sr Salvador y Abuelita Dorita", pases: 2 },
+            "54": { nombre: "Padrinos Juan Pequita y tíos", pases: 4 },
+            "55": { nombre: "Pao", pases: 1 },
+            "56": { nombre: "Tíos Carlitos, Jenny y bb Thiago", pases: 3 },
+            "57": { nombre: "Padrino Chente, tia Lety y Padrinito Emi", pases: 3 },
+            "58": { nombre: "Tía Ivonne", pases: 1 },
+            "59": { nombre: "Tíos Toño, Abril y primitas", pases: 4 },
+            "60": { nombre: "Tíos Hugo, Sandi y primos chambelanes", pases: 4 },
+            "61": { nombre: "Tíos Jorgito y Lili", pases: 2 },
+            "62": { nombre: "Tia Lupita Rafita y Edgar", pases: 3 },
+            "63": { nombre: "Lili Castillo Ortega", pases: 2 },
+            "64": { nombre: "Señora Luci Paez", pases: 2 },
+            "65": { nombre: "Sr. Luis Asdrubal Lara", pases: 2 },
+            "66": { nombre: "Hazael Maldonado", pases: 2 },
+            "67": { nombre: "Mi mejor amiga Reni", pases: 5 },
+            "68": { nombre: "Mi mejor amiga Andy", pases: 4 },
+            "69": { nombre: ". Marí", pases: 3 },
+            "70": { nombre: "Valeria", pases: 3 },
+            "71": { nombre: "Juan Pa Manzano", pases: 3 },
+            "72": { nombre: "Juan Pa Flores", pases: 3 },
+            "73": { nombre: "Carlos Arévalo", pases: 1 },
+            "74": { nombre: "Carlos Hernández Chavarría", pases: 1 },
+            "75": { nombre: "Sergio Tequimila", pases: 3 },
+            "76": { nombre: "Ana y Pau", pases: 2 },
+            "77": { nombre: "Santi Sierra", pases: 3 },
+            "78": { nombre: "Sr. Francisco Bonilla", pases: 2 },
+            "79": { nombre: "Tíos Rafa y Rosi", pases: 2 },
+            "80": { nombre: "Tíos Angelo, Adri y primita Cori", pases: 3 },
+            "81": { nombre: "Tía Ale y Sarita", pases: 2 },
+            "82": { nombre: "Miss Lupita Contreras", pases: 1 },
+            "83": { nombre: "Dr. Juan y Sra. Martita", pases: 1 },
+            "84": { nombre: "Sor Rosario Mesa", pases: 4 }
         };
 
         let parametroId = urlParams.get('id');
@@ -825,6 +910,7 @@
         const rsvpStatus = document.getElementById("rsvp-status");
         const rsvpGuests = document.getElementById("rsvp-guests");
 
+        // Esta lógica previene confirmar MÁS asistentes que los asignados, pero permite seleccionar un número menor
         rsvpStatus.addEventListener('change', (e) => {
             if(e.target.value === 'yes') {
                 rsvpGuests.style.display = 'block';
