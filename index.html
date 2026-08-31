@@ -165,14 +165,13 @@
         }
         .vertical-accent.left { right: auto; left: 10px; }
 
-        /* Cerezos Flotantes - ¡Ahora en la capa superior a las fotos! */
+        /* Cerezos Flotantes - ¡Sin transparencia, en la capa superior a las fotos! */
         .floral-img {
-            position: absolute; pointer-events: none; opacity: 0.3; max-width: 140px;
-            mix-blend-mode: multiply; 
+            position: absolute; pointer-events: none; opacity: 1; max-width: 140px;
             animation: floatSakura 8s ease-in-out infinite;
             z-index: 3; /* Z-INDEX 3 PARA PASAR SOBRE LAS FOTOS (Z-INDEX: 2) */
         }
-        .bg-black .floral-img { mix-blend-mode: screen; opacity: 0.15; filter: grayscale(100%); }
+        .bg-black .floral-img { filter: grayscale(100%); opacity: 1; } /* En sección negra se quedan grises pero 100% visibles */
 
         /* Tipografía Editorial y Contenedores Textuales (Z-INDEX 4 PARA QUE NO SEAN TAPADOS POR LAS FLORES) */
         .tag-line {
