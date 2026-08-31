@@ -165,13 +165,15 @@
         }
         .vertical-accent.left { right: auto; left: 10px; }
 
-        /* Cerezos Flotantes - ¡Sin transparencia, en la capa superior a las fotos! */
+        /* Cerezos Flotantes - ¡Sin fondo blanco, en la capa superior a las fotos! */
         .floral-img {
             position: absolute; pointer-events: none; opacity: 1; max-width: 140px;
+            mix-blend-mode: multiply; /* ESTO ELIMINA EL FONDO BLANCO DE LA IMAGEN */
             animation: floatSakura 8s ease-in-out infinite;
             z-index: 3; /* Z-INDEX 3 PARA PASAR SOBRE LAS FOTOS (Z-INDEX: 2) */
         }
-        .bg-black .floral-img { filter: grayscale(100%); opacity: 1; } /* En sección negra se quedan grises pero 100% visibles */
+        /* Ajuste especial para la sección negra para que el cerezo no se pierda ni muestre caja blanca */
+        .bg-black .floral-img { filter: invert(1) grayscale(100%); mix-blend-mode: screen; opacity: 0.6; }
 
         /* Tipografía Editorial y Contenedores Textuales (Z-INDEX 4 PARA QUE NO SEAN TAPADOS POR LAS FLORES) */
         .tag-line {
